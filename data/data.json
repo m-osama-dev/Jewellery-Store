@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "/images/bridal-set.jpg",
+      "text": "Traditional Bridal Set",
+      "category": "Bridal Sets",
+      "inStock": false,
+      "material": "22K Gold",
+      "style": "Bridal",
+      "weight": "65g",
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "image": "/images/gold-necklace.jpg",
+      "text": "Choker Necklace",
+      "category": "Necklaces",
+      "inStock": true,
+      "material": "21K Gold",
+      "style": "Traditional",
+      "weight": "22g",
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "image": "/images/gold-bangles.jpg",
+      "text": "Pair of Bangles",
+      "category": "Bangles",
+      "inStock": true,
+      "material": "21K Gold",
+      "style": "Classic",
+      "weight": "18g",
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "image": "/images/gold-ring.jpg",
+      "text": "Engagement Ring",
+      "category": "Rings",
+      "inStock": true,
+      "material": "21K Gold with Stone",
+      "style": "Elegant",
+      "weight": "5g",
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "image": "/images/gold-jhumkay.jpg",
+      "text": "Jhumkay Earrings",
+      "category": "Earrings",
+      "inStock": true,
+      "material": "22K Gold",
+      "style": "Traditional",
+      "weight": "7g",
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "image": "/images/gold-mala.jpg",
+      "text": "Mala Set",
+      "category": "Necklaces",
+      "inStock": true,
+      "material": "22K Gold",
+      "style": "Cultural",
+      "weight": "28g",
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "image": "/images/gold-kara.jpg",
+      "text": "Men’s Kara",
+      "category": "Men’s Jewelry",
+      "inStock": true,
+      "material": "22K Gold",
+      "style": "Traditional",
+      "weight": "20g",
+      "quantity": 1
+    },
+    {
+      "id": 8,
+      "image": "/images/gold-chain.jpg",
+      "text": "Simple Chain",
+      "category": "Chains",
+      "inStock": true,
+      "material": "21K Gold",
+      "style": "Minimal",
+      "weight": "12g",
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "image": "/images/gold-nosepin.jpg",
+      "text": "Nose Pin",
+      "category": "Nose Pins",
+      "inStock": true,
+      "material": "21K Gold",
+      "style": "Simple",
+      "weight": "1g",
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "image": "/images/gold-tikka.jpg",
+      "text": "Matha Patti / Tikka",
+      "category": "Head Jewelry",
+      "inStock": true,
+      "material": "22K Gold",
+      "style": "Bridal",
+      "weight": "8g",
+      "quantity": 1
+    },
+    {
+      "id": 11,
+      "image": "/images/gold-kids.jpg",
+      "text": "Kids Bangle",
+      "category": "Kids Jewelry",
+      "inStock": true,
+      "material": "21K Gold",
+      "style": "Simple",
+      "weight": "3g",
+      "quantity": 1
+    }
+  ],
+  "categories": [
+    {
+      "image": "/images/jewelry.jpg",
+      "buttonText": "Buy New Jewelry"
+    },
+    {
+      "image": "/images/sell.png",
+      "buttonText": "Sell Your Gold"
+    },
+    {
+      "image": "/images/repair.jpg",
+      "buttonText": "Jewelry Repair"
+    }
+  ]
+}
