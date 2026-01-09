@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 export async function GET() {
-  const token = cookies().get("token")?.value; // ❌ no await
+  // ✅ Await cookies() first
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
 
   if (!token) {
     return NextResponse.json({ authenticated: false }, { status: 401 });

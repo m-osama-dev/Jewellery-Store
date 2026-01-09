@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/middleware.js"],"sourcesContent":["import { NextResponse } from \"next/server\";\r\n\r\nexport function middleware(req) {\r\n  const token = req.cookies.get(\"token\")?.value;\r\n  const protectedRoutes = [\"/cart\", \"/checkout\", \"/wishlist\", \"/profile\"];\r\n\r\n  // If user tries to visit a protected route without a token → redirect to login\r\n  if (protectedRoutes.includes(req.nextUrl.pathname) && !token) {\r\n    return NextResponse.redirect(new URL(\"/auth/login\", req.url));\r\n  }\r\n\r\n  return NextResponse.next();\r\n}\r\n\r\nexport const config = {\r\n  matcher: [\"/cart\", \"/checkout\", \"/wishlist\", \"/profile\"],\r\n};\r\n"],"names":[],"mappings":";;;;;;AAAA;AAAA;;AAEO,SAAS,WAAW,GAAG;IAC5B,MAAM,QAAQ,IAAI,OAAO,CAAC,GAAG,CAAC,UAAU;IACxC,MAAM,kBAAkB;QAAC;QAAS;QAAa;QAAa;KAAW;IAEvE,+EAA+E;IAC/E,IAAI,gBAAgB,QAAQ,CAAC,IAAI,OAAO,CAAC,QAAQ,KAAK,CAAC,OAAO;QAC5D,OAAO,gMAAY,CAAC,QAAQ,CAAC,IAAI,IAAI,eAAe,IAAI,GAAG;IAC7D;IAEA,OAAO,gMAAY,CAAC,IAAI;AAC1B;AAEO,MAAM,SAAS;IACpB,SAAS;QAAC;QAAS;QAAa;QAAa;KAAW;AAC1D"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 70, "column": 0}, "map": {"version":3,"sources":["file:///D:/jewellery-store/app/api/check-auth/route.js"],"sourcesContent":["import { cookies } from \"next/headers\";\r\nimport { NextResponse } from \"next/server\";\r\nimport jwt from \"jsonwebtoken\";\r\n\r\nexport async function GET() {\r\n  // ✅ Await cookies() first\r\n  const cookieStore = await cookies();\r\n  const token = cookieStore.get(\"token\")?.value;\r\n\r\n  if (!token) {\r\n    return NextResponse.json({ authenticated: false }, { status: 401 });\r\n  }\r\n\r\n  try {\r\n    jwt.verify(token, process.env.JWT_SECRET);\r\n    return NextResponse.json({ authenticated: true }, { status: 200 });\r\n  } catch {\r\n    return NextResponse.json({ authenticated: false }, { status: 401 });\r\n  }\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;AACA;AACA;;;;AAEO,eAAe;IACpB,0BAA0B;IAC1B,MAAM,cAAc,MAAM,IAAA,4IAAO;IACjC,MAAM,QAAQ,YAAY,GAAG,CAAC,UAAU;IAExC,IAAI,CAAC,OAAO;QACV,OAAO,gJAAY,CAAC,IAAI,CAAC;YAAE,eAAe;QAAM,GAAG;YAAE,QAAQ;QAAI;IACnE;IAEA,IAAI;QACF,kJAAG,CAAC,MAAM,CAAC,OAAO,QAAQ,GAAG,CAAC,UAAU;QACxC,OAAO,gJAAY,CAAC,IAAI,CAAC;YAAE,eAAe;QAAK,GAAG;YAAE,QAAQ;QAAI;IAClE,EAAE,OAAM;QACN,OAAO,gJAAY,CAAC,IAAI,CAAC;YAAE,eAAe;QAAM,GAAG;YAAE,QAAQ;QAAI;IACnE;AACF"}}]
+}

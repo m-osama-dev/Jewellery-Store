@@ -1,6 +1,5 @@
 // app/about/page.jsx
 "use client";
-
 import {
   FaGem,
   FaCrown,
@@ -123,7 +122,7 @@ export default function AboutPage() {
         {/* Founder Section */}
         <div className="grid md:grid-cols-3 gap-10 items-center bg-pink-50 p-10 rounded-2xl shadow-inner mb-16">
           <img
-            src="/images/founder.jpg"
+            src="user"
             alt="Founder"
             className="rounded-2xl w-48 h-48 object-cover mx-auto shadow-lg"
           />
