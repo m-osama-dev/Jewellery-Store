@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -9,7 +8,7 @@ import Productcard from "./Productcard";
 const PreArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-[-10px] top-1/2 transform-translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white cursor-pointer transition-colors z-10 outline-none"
+    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10"
   >
     <FaArrowLeft size={20} />
   </button>
@@ -18,7 +17,7 @@ const PreArrow = ({ onClick }) => (
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-[-10px] top-1/2 transform-translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white cursor-pointer transition-colors z-10 outline-none"
+    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10"
   >
     <FaArrowRight size={20} />
   </button>
@@ -30,66 +29,48 @@ const CardCarousel = ({ title, cards }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    dots: false,
     arrows: true,
+    dots: false,
     nextArrow: <NextArrow />,
     prevArrow: <PreArrow />,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
     ],
   };
 
   return (
     <div className="w-full max-w-7xl mx-auto my-12 px-4">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-bold">
           {title}
         </h2>
-        <Link href="products">
-          <span className="text-lg text-gray-600 hover:text-[#a91f64]">
-            View More
-          </span>
+        <Link href="/products" className="text-lg hover:text-[#a91f64]">
+          View More
         </Link>
       </div>
 
-      <div className="relative">
-        <Slider {...settings}>
-          {cards.map((card, index) => (
-            <div key={index} className="px-2">
-              <Productcard
-                id={card.id}
-                image={card.image}
-                text={card.text}
-                weight={card.weight}
-                category={card.category}
-                inStock={card.inStock}
-              />
-
-              {/* 
-              Old version kept for reference:
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="relative h-48">
-                  <Image
-                    src={card.image}
-                    fill
-                    alt=""
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-semibold text-gray-800 truncate">
-                    {card.text}
-                  </h3>
-                  <p className="text-[#a91f64] font-bold">{card.price}</p>
-                </div>
-              </div> 
-              */}
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        {cards.map((card, index) => (
+          <div key={index} className="px-1">
+            <Productcard {...card} />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };
