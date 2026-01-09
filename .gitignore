@@ -1,11 +1,4 @@
-# Dependencies
 node_modules/
-
-
-# Environment variables
+.next/
 .env
-.env.local
-.env.development.local
-.env.production.local
-
- 
+.DS_Store
