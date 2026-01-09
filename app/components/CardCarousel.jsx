@@ -1,14 +1,17 @@
 "use client";
+
 import Link from "next/link";
 import React from "react";
+import dynamic from "next/dynamic";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Slider from "react-slick";
 import Productcard from "./Productcard";
+
+const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 const PreArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10"
+    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10 hidden sm:flex"
   >
     <FaArrowLeft size={20} />
   </button>
@@ -17,7 +20,7 @@ const PreArrow = ({ onClick }) => (
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10"
+    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10 hidden sm:flex"
   >
     <FaArrowRight size={20} />
   </button>
@@ -25,28 +28,25 @@ const NextArrow = ({ onClick }) => (
 
 const CardCarousel = ({ title, cards }) => {
   const settings = {
-    infinite: true,
-    speed: 500,
+    infinite: false,
+    speed: 400,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
     dots: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PreArrow />,
     responsive: [
       {
         breakpoint: 1024,
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
+        settings: { slidesToShow: 3 },
       },
       {
         breakpoint: 768,
-        settings: { slidesToShow: 2, slidesToScroll: 1 },
+        settings: { slidesToShow: 2 },
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
           arrows: false,
         },
       },
@@ -66,7 +66,7 @@ const CardCarousel = ({ title, cards }) => {
 
       <Slider {...settings}>
         {cards.map((card, index) => (
-          <div key={index} className="px-1">
+          <div key={index} className="px-2">
             <Productcard {...card} />
           </div>
         ))}
