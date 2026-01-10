@@ -21,7 +21,7 @@ const SliderComponent = () => {
         <Slider {...setting}>
           {slides.map((slides, index) => (
             <div key={index} className="relative">
-              <div className="relative h-[200px] md:h-[500px] w-full">
+              <div className="relative h-[300px] sm:h-[500px] w-full">
                 <Image src={slides} fill alt="" className="rounded-3xl object-cover" />
                 <div className="absolute inset-0 bg-black opacity-30 rounded-3xl"></div>
                 {/* overlay for each slide  */}
