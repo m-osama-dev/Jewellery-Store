@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Productcard from "./Productcard";
@@ -11,46 +11,54 @@ const Slider = dynamic(() => import("react-slick"), { ssr: false });
 const PreArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10 hidden sm:flex"
+    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10 hidden sm:flex"
   >
-    <FaArrowLeft size={20} />
+    <FaArrowLeft size={18} />
   </button>
 );
 
 const NextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white text-black shadow-md p-2 rounded-full hover:bg-[#a91f64] hover:text-white z-10 hidden sm:flex"
+    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-md p-2 rounded-full z-10 hidden sm:flex"
   >
-    <FaArrowRight size={20} />
+    <FaArrowRight size={18} />
   </button>
 );
 
-const CardCarousel = ({ title, cards }) => {
+export default function CardCarousel({ title, cards }) {
+  const [mounted, setMounted] = useState(false);
+  const [slides, setSlides] = useState(4);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const updateSlides = () => {
+      const width = window.innerWidth;
+
+      if (width < 640) setSlides(1);
+      else if (width < 768) setSlides(2);
+      else if (width < 1024) setSlides(3);
+      else setSlides(4);
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
+  if (!mounted) return null;
+
   const settings = {
     infinite: false,
     speed: 400,
-    slidesToShow: 4,
+    slidesToShow: slides,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: slides > 1,
     dots: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 3 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-        },
-      },
-    ],
+    nextArrow: <NextArrow />,
+    prevArrow: <PreArrow />,
   };
 
   return (
@@ -73,6 +81,4 @@ const CardCarousel = ({ title, cards }) => {
       </Slider>
     </div>
   );
-};
-
-export default CardCarousel;
+}
