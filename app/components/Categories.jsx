@@ -3,13 +3,14 @@ import React from "react";
 import { categories } from "../../data/data.json";
 import Image from "next/image";
 import Link from "next/link";
+
 const Categories = () => {
   return (
     <div className="mx-auto my-8 max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-6">
       {categories.map((category, index) => (
         <div
           key={index}
-          className="group relative w-full h-80 flex flex-col justify-end overflow-hidden rounded-2xl "
+          className="group relative w-full aspect-[4/3] md:h-80 flex flex-col justify-end overflow-hidden rounded-2xl"
         >
           <Image
             src={category.image}

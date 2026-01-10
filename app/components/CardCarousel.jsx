@@ -74,7 +74,7 @@ export default function CardCarousel({ title, cards }) {
 
       <Slider {...settings}>
         {cards.map((card, index) => (
-          <div key={index} className="px-2">
+          <div key={index} className="px-1">
             <Productcard {...card} />
           </div>
         ))}
